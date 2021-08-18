@@ -10,6 +10,14 @@ const ListRepositories = () => {
   if (repositories.length === 0) {
     return <div style={{ textAlign: "center" }}>Репозитории не найдены</div>;
   }
+  const storage = window.localStorage;
+
+  const favsBtnHandler = (id) => {
+    const favsArr = [];
+    favsArr.push(id);
+    storage.setItem('favorites', JSON.stringify(favsArr));
+  }
+
   return loading ? (
     <Preloader />
   ) : (
@@ -17,10 +25,12 @@ const ListRepositories = () => {
       {repositories.map((repo) => (
         <RepositoryItem
           key={repo.id}
+          id={repo.id}
           rating={repo.stargazers_count}
           name={repo.name}
           ownerName={repo.owner.login}
           image={repo.owner.avatar_url}
+          onClick={favsBtnHandler}
         />
       ))}
       <Pagination />

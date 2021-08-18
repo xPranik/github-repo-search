@@ -3,15 +3,16 @@ import {
     LinkStyled,
     Name,
     Rating,
-    RepoBody,
+    RepoBody, RepoItemActions,
     RepoItemContent,
     RepoItemWrapper
 } from "./RepositoryItemStyled";
 import star from './../../../../static/icons/star.svg'
 import Avatar from "../../../base/Avatar/Avatar";
 import {Link} from "react-router-dom";
+import {ButtonStyled} from "../../Pagination/PaginationStyled";
 
-const RepositoryItem = ({name, rating, image, ownerName}) => {
+const RepositoryItem = ({id, name, rating, image, ownerName, onClick}) => {
     return (
         <RepoItemWrapper>
             <RepoItemContent>
@@ -21,9 +22,12 @@ const RepositoryItem = ({name, rating, image, ownerName}) => {
                     <Rating><img src={star} alt="star"/>{rating}</Rating>
                 </RepoBody>
             </RepoItemContent>
-            <Link to={`/repository/`+ownerName+'/'+name}>
-                <LinkStyled>View more</LinkStyled>
-            </Link>
+            <RepoItemActions>
+                <ButtonStyled onClick={() => onClick(id)}>Add to favorites</ButtonStyled>
+                <Link to={`/repository/`+ownerName+'/'+name}>
+                    <LinkStyled>View more</LinkStyled>
+                </Link>
+            </RepoItemActions>
 
         </RepoItemWrapper>
     );

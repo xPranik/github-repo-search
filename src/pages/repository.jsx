@@ -34,7 +34,6 @@ const RepositoryPage = () => {
             rating={repository.stargazers_count}
             created_at={repository.created_at}
           />
-          <Links></Links>
         </ContentRow>
       )}
     </PageWrapper>

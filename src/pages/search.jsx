@@ -11,11 +11,9 @@ const SearchPage = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         if(!isSplashscreenShown) {
-            let timeout;
-            timeout = setTimeout(() => {
+            setTimeout(() => {
                 dispatch(showSplashscreen());
             }, 3000);
-            clearTimeout(timeout);
         }
     }, [])
     console.log({isSplashscreenShown});

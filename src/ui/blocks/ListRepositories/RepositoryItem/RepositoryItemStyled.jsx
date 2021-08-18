@@ -23,6 +23,12 @@ export const RepoItemContent = styled.div`
   align-items: center;
 `;
 
+export const RepoItemActions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const RepoBody = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,6 +62,7 @@ export const LinkStyled = styled.a`
   border-radius: 3px;
   border: 1px solid #b3b3b3;
   white-space: nowrap;
+  margin-left: 8px;
   &:hover {
     cursor: pointer;
     color: #d5ab78;
