@@ -19,7 +19,9 @@ const RepositoryItem = ({ id, fullName, rating, image, onClick, favorite }) => {
       <RepoItemContent>
         <Avatar src={image} circle />
         <RepoBody>
-          <Name>{fullName}</Name>
+          <Link to={"/repository/" + fullName}>
+            <Name>{fullName}</Name>
+          </Link>
           <Rating>
             <img src={star} alt="star" />
             {rating}

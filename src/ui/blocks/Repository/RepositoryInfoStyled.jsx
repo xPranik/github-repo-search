@@ -3,18 +3,26 @@ import { LinkBase } from "../ListRepositories/RepositoryItem/RepositoryItemStyle
 
 export const Header = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  flex-direction: column;
+  margin-top: 16px;
+  @media (min-width: 764px) {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0;
+  }
 `;
 
 export const HeaderStart = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 `;
 
 export const Title = styled.h2`
   color: #fff;
   font-size: 18px;
+  margin-right: 8px;
 `;
 export const Date = styled.span`
   color: #b3b3b3;
@@ -26,7 +34,7 @@ export const Description = styled.p`
   margin-top: 16px;
 `;
 export const RepositoryInfoStyled = styled.div`
-  padding: 16px;
+  margin-left: 16px;
   font-size: 16px;
   width: 100%;
 `;

@@ -9,12 +9,19 @@ export const ContainerStyled = styled.div`
 export const ContentRow = styled.div`
   display: flex;
   width: 100%;
+  flex-direction: column;
+  @media (min-width: 764px) {
+    flex-direction: row;
+  }
 `;
 
 export const ContentWrapper = styled.div`
   width: 100%;
-  min-height: 90vh;
-  padding: 30px;
+  padding: 15px;
   border-radius: 15px;
   background-color: #242424;
+  @media (min-width: 764px) {
+    min-height: 90vh;
+    padding: 30px;
+  }
 `;

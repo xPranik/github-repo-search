@@ -35,7 +35,7 @@ const RepositoryInfo = ({
       </Header>
       {description && <Description>{description}</Description>}
       <Links>
-        <LinkBase href={`https://www.github/${fullname}`} target="_blank">
+        <LinkBase href={`https://github.com/${fullname}`} target="_blank">
           github/{fullname}
         </LinkBase>
       </Links>

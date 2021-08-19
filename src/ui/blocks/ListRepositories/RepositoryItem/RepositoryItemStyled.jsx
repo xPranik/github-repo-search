@@ -44,7 +44,7 @@ export const RepoBody = styled.div`
   padding-left: 16px;
 `;
 
-export const Name = styled.a`
+export const Name = styled.div`
   color: #d5ab78;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
@@ -70,7 +70,7 @@ export const LinkBase = styled.a`
     text-decoration: underline;
   }
 `;
-export const LinkStyled = styled(LinkBase)`
+export const LinkStyled = styled.div`
   font-size: 12px;
   padding: 4px 8px;
   color: #b3b3b3;
@@ -81,6 +81,7 @@ export const LinkStyled = styled(LinkBase)`
   white-space: nowrap;
   margin-left: 8px;
   &:hover {
+    cursor: pointer;
     color: #d5ab78;
     border-color: #d5ab78;
   }

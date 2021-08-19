@@ -34,12 +34,12 @@ const ListRepositories = () => {
     <Preloader />
   ) : (
     <ListWrapper>
-      <Title>Search by: {query}</Title>
+      {query && <Title>Search by: {query}</Title>}
       {repositories.map((repo) => (
         <RepositoryItem
           key={repo.id}
           id={repo.id}
-          favorite={favsArr.includes(repo.id)}
+          favorite={favsArr?.includes(repo.id)}
           rating={repo.stargazers_count}
           fullName={repo.full_name}
           image={repo.owner.avatar_url}
