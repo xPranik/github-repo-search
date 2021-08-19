@@ -11,10 +11,10 @@ export const PageNum = styled.div`
 export const ButtonStyled = styled.button`
   font-size: 12px;
   padding: 4px 8px;
-  color: #b3b3b3;
+  color: ${props => props.active ? 'black' : '#b3b3b3'};
   display: inline-flex;
   align-items: center;
-  background-color: transparent;
+  background-color: ${props => props.active ? '#d5ab78' : 'transparent'};
   border-radius: 3px;
   border: 1px solid #b3b3b3;
   white-space: nowrap;
@@ -25,6 +25,7 @@ export const ButtonStyled = styled.button`
     cursor: pointer;
     color: #d5ab78;
     border-color: #d5ab78;
+    background-color: transparent;
   }
 `;
 

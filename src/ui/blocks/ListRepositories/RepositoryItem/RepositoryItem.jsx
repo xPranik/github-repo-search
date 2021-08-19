@@ -12,7 +12,7 @@ import Avatar from "../../../base/Avatar/Avatar";
 import {Link} from "react-router-dom";
 import {ButtonStyled} from "../../Pagination/PaginationStyled";
 
-const RepositoryItem = ({id, name, rating, image, ownerName, onClick}) => {
+const RepositoryItem = ({id, name, rating, image, ownerName, onClick, favorite}) => {
     return (
         <RepoItemWrapper>
             <RepoItemContent>
@@ -23,7 +23,7 @@ const RepositoryItem = ({id, name, rating, image, ownerName, onClick}) => {
                 </RepoBody>
             </RepoItemContent>
             <RepoItemActions>
-                <ButtonStyled onClick={() => onClick(id)}>Add to favorites</ButtonStyled>
+                <ButtonStyled active={favorite} onClick={() => onClick(id)}>{favorite ? 'Remove from favorites' : 'Add to favorites'}</ButtonStyled>
                 <Link to={`/repository/`+ownerName+'/'+name}>
                     <LinkStyled>View more</LinkStyled>
                 </Link>

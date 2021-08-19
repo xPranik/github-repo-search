@@ -12,7 +12,6 @@ const Pagination = () => {
   } = useSelector((state) => state.repositories);
   const dispatch = useDispatch();
   const maxPages = Math.ceil(count / limit);
-  console.log({ maxPages, count, page });
   const changePageDown = () => {
     dispatch(fetchRepositories(query, limit, page - 1));
   };
