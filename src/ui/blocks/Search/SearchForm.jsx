@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchRepositories } from "../../../store/actions/repositories";
 import {
   BaseForm,
@@ -10,9 +10,11 @@ import {
   InputWrapper,
   SubmitButton,
 } from "./SearchStyled";
+import { sortOptions } from "../../../utils/consts";
 
 const SearchForm = () => {
-  const [inputVal, setInputVal] = useState("");
+  const { query, repositories } = useSelector((state) => state.repositories);
+  const [inputVal, setInputVal] = useState(query || "");
   const [inputValid, setInputValid] = useState(true);
   const [sortType, setSortType] = useState({ sort: "", order: "" });
   const typeSelectRef = useRef();
@@ -25,8 +27,6 @@ const SearchForm = () => {
         fetchRepositories(inputVal, 10, 1, sortType.sort, sortType.order)
       );
       setInputVal("");
-      setSortType({ sort: "best_match", order: "" });
-      typeSelectRef.current.options[0].selected = "selected";
     } else {
       setInputValid(false);
     }
@@ -34,38 +34,13 @@ const SearchForm = () => {
   const changeSortType = (e) => {
     const tempArr = e.target.value.split(" ");
     setSortType({ sort: tempArr[0], order: tempArr[1] });
+    const tempQuery = query || inputVal;
+    tempQuery &&
+      repositories.length !== 0 &&
+      dispatch(
+        fetchRepositories(tempQuery, 10, 1, sortType.sort, sortType.order)
+      );
   };
-
-  const sortOptions = [
-    {
-      val: "best_match",
-      placeholder: "Best match",
-    },
-    {
-      val: "name asc",
-      placeholder: "Name A-z",
-    },
-    {
-      val: "name desc",
-      placeholder: "Name Z-a",
-    },
-    {
-      val: "stars desc",
-      placeholder: "Stars to lower",
-    },
-    {
-      val: "stars asc",
-      placeholder: "Stars to higher",
-    },
-    {
-      val: "updated desc",
-      placeholder: "From new to old",
-    },
-    {
-      val: "updated asc",
-      placeholder: "From old to new",
-    },
-  ];
 
   return (
     <FormWrapper>
