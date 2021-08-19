@@ -4,12 +4,14 @@ export const RepoItemWrapper = styled.div`
   background: #121212;
   display: flex;
   justify-content: space-between;
-  padding: 12px 18px;
+  padding: 8px;
   border-radius: 8px;
   max-width: 600px;
   width: 100%;
   transition: box-shadow 0.2s;
   flex-direction: column;
+  border: 1px solid;
+  border-color: ${(props) => (props.favorite ? "#d5ab78" : "transparent")};
   &:not(:last-child) {
     margin-bottom: 16px;
   }
@@ -17,6 +19,7 @@ export const RepoItemWrapper = styled.div`
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
   }
   @media (min-width: 764px) {
+    padding: 12px 18px;
     flex-direction: row;
     align-items: center;
   }
@@ -46,8 +49,11 @@ export const RepoBody = styled.div`
 
 export const Name = styled.div`
   color: #d5ab78;
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  word-break: break-all;
+  @media (min-width: 764px) {
+    font-size: 16px;
+  }
 `;
 
 export const Rating = styled.div`

@@ -36,6 +36,37 @@ const SearchForm = () => {
     setSortType({ sort: tempArr[0], order: tempArr[1] });
   };
 
+  const sortOptions = [
+    {
+      val: "best_match",
+      placeholder: "Best match",
+    },
+    {
+      val: "name asc",
+      placeholder: "Name A-z",
+    },
+    {
+      val: "name desc",
+      placeholder: "Name Z-a",
+    },
+    {
+      val: "stars desc",
+      placeholder: "Stars to lower",
+    },
+    {
+      val: "stars asc",
+      placeholder: "Stars to higher",
+    },
+    {
+      val: "updated desc",
+      placeholder: "From new to old",
+    },
+    {
+      val: "updated asc",
+      placeholder: "From old to new",
+    },
+  ];
+
   return (
     <FormWrapper>
       <BaseForm>
@@ -51,13 +82,11 @@ const SearchForm = () => {
         </InputWrapper>
         <InputWrapper>
           <BaseSelect onChange={changeSortType} ref={typeSelectRef}>
-            <option value="best_match">Best match</option>
-            <option value="name asc">Name A-z</option>
-            <option value="name desc">Name Z-a</option>
-            <option value="stars desc">Stars to lower</option>
-            <option value="stars asc">Stars to higher</option>
-            <option value="updated desc">From new to old</option>
-            <option value="updated asc">From old to new</option>
+            {sortOptions.map((option) => (
+              <option key={option.val} value={option.val}>
+                {option.placeholder}
+              </option>
+            ))}
           </BaseSelect>
         </InputWrapper>
       </BaseForm>

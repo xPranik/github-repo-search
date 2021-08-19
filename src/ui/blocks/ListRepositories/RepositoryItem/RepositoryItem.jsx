@@ -15,7 +15,7 @@ import { ButtonStyled } from "../../Pagination/PaginationStyled";
 
 const RepositoryItem = ({ id, fullName, rating, image, onClick, favorite }) => {
   return (
-    <RepoItemWrapper>
+    <RepoItemWrapper favorite={favorite}>
       <RepoItemContent>
         <Avatar src={image} circle />
         <RepoBody>
