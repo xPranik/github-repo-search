@@ -3,18 +3,22 @@ import styled from "styled-components";
 export const RepoItemWrapper = styled.div`
   background: #121212;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 12px 18px;
   border-radius: 8px;
   max-width: 600px;
   width: 100%;
   transition: box-shadow 0.2s;
+  flex-direction: column;
   &:not(:last-child) {
     margin-bottom: 16px;
   }
   &:hover {
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+  }
+  @media (min-width: 764px) {
+    flex-direction: row;
+    align-items: center;
   }
 `;
 
@@ -26,7 +30,12 @@ export const RepoItemContent = styled.div`
 export const RepoItemActions = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-top: 12px;
+  @media (min-width: 764px) {
+    margin-top: 0;
+    justify-content: center;
+  }
 `;
 
 export const RepoBody = styled.div`
@@ -52,11 +61,19 @@ export const Rating = styled.div`
   }
 `;
 
-export const LinkStyled = styled.a`
+export const LinkBase = styled.a`
+  font-size: 14px;
+  color: #d5ab78;
+  display: inline-flex;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`;
+export const LinkStyled = styled(LinkBase)`
   font-size: 12px;
   padding: 4px 8px;
   color: #b3b3b3;
-  display: inline-flex;
   align-items: center;
   background-color: transparent;
   border-radius: 3px;
@@ -64,7 +81,6 @@ export const LinkStyled = styled.a`
   white-space: nowrap;
   margin-left: 8px;
   &:hover {
-    cursor: pointer;
     color: #d5ab78;
     border-color: #d5ab78;
   }

@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import PageWrapper from "../ui/base/PageWrapper/PageWrapper";
 import Avatar from "../ui/base/Avatar/Avatar";
 import RepositoryInfo from "../ui/blocks/Repository/RepositoryInfo";
-import { ContentRow } from "../ui/base/Container/ContainerStyled";
+import {
+  ContentRow,
+  ContentWrapper,
+} from "../ui/base/Container/ContainerStyled";
 import Preloader from "../ui/base/Preloader/Preloader";
-import { Links } from "../ui/blocks/Repository/RepositoryInfoStyled";
 
 const RepositoryPage = () => {
   const { owner, repo } = useParams();
@@ -16,25 +18,28 @@ const RepositoryPage = () => {
   useEffect(() => {
     dispatch(getRepository(owner, repo));
   }, [owner, repo]);
-  console.log(repository);
+
   return (
     <PageWrapper>
       {loading ? (
         <Preloader />
       ) : (
-        <ContentRow>
-          <Avatar
-            src={repository.owner?.avatar_url}
-            size={64}
-            name={repository.owner?.login}
-          />
-          <RepositoryInfo
-            name={repository.name}
-            description={repository.description}
-            rating={repository.stargazers_count}
-            created_at={repository.created_at}
-          />
-        </ContentRow>
+        <ContentWrapper>
+          <ContentRow>
+            <Avatar
+              src={repository.owner?.avatar_url}
+              size={64}
+              name={repository.owner?.login}
+            />
+            <RepositoryInfo
+              name={repository.name}
+              description={repository.description}
+              rating={repository.stargazers_count}
+              created_at={repository.created_at}
+              fullname={repository.full_name}
+            />
+          </ContentRow>
+        </ContentWrapper>
       )}
     </PageWrapper>
   );

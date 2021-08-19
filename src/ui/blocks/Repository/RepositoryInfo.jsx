@@ -3,24 +3,42 @@ import {
   Date,
   Description,
   Header,
+  HeaderStart,
+  Links,
   RepositoryInfoStyled,
   Title,
 } from "./RepositoryInfoStyled";
-import { Rating } from "../ListRepositories/RepositoryItem/RepositoryItemStyled";
+import {
+  LinkBase,
+  Rating,
+} from "../ListRepositories/RepositoryItem/RepositoryItemStyled";
 import star from "../../../static/icons/star.svg";
 
-const RepositoryInfo = ({ name, description, rating, created_at }) => {
+const RepositoryInfo = ({
+  name,
+  fullname,
+  description,
+  rating,
+  created_at,
+}) => {
   return (
     <RepositoryInfoStyled>
       <Header>
-        <Title>{name}</Title>
+        <HeaderStart>
+          <Title>{name}</Title>
+          <Rating>
+            <img src={star} alt="star" />
+            {rating}
+          </Rating>
+        </HeaderStart>
         <Date>{created_at}</Date>
-        <Rating>
-          <img src={star} alt="star" />
-          {rating}
-        </Rating>
       </Header>
-      <Description>{description}</Description>
+      {description && <Description>{description}</Description>}
+      <Links>
+        <LinkBase href={`https://www.github/${fullname}`} target="_blank">
+          github/{fullname}
+        </LinkBase>
+      </Links>
     </RepositoryInfoStyled>
   );
 };

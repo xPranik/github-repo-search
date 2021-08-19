@@ -9,14 +9,16 @@ const Pagination = () => {
     limit = 10,
     count,
     query,
+    sort,
+    order,
   } = useSelector((state) => state.repositories);
   const dispatch = useDispatch();
   const maxPages = Math.ceil(count / limit);
   const changePageDown = () => {
-    dispatch(fetchRepositories(query, limit, page - 1));
+    dispatch(fetchRepositories(query, limit, page - 1, sort, order));
   };
   const changePageUp = () => {
-    dispatch(fetchRepositories(query, limit, page + 1));
+    dispatch(fetchRepositories(query, limit, page + 1, sort, order));
   };
   return (
     <PaginationWrap>

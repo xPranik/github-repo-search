@@ -10,6 +10,8 @@ const initState = {
   limit: 10,
   count: 0,
   query: "",
+  sort: "",
+  order: "",
 };
 
 export const repositoriesReducer = (state = initState, action) => {
@@ -33,6 +35,8 @@ export const repositoriesReducer = (state = initState, action) => {
         count: action.payload.total_count,
         query: action.query,
         page: action.page,
+        sort: action.sort,
+        order: action.order,
       };
     }
     case repositoriesActionTypes.FETCH_REPOSITORIES_ERROR:
@@ -43,6 +47,8 @@ export const repositoriesReducer = (state = initState, action) => {
         count: 0,
         query: "",
         page: 1,
+        sort: "best_match",
+        order: "desc",
       };
     default:
       return state;

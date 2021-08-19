@@ -5,3 +5,9 @@ export const ListWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const Title = styled.div`
+  margin: 16px 0;
+  font-size: 18px;
+  color: #fff;
+`;
