@@ -15,7 +15,7 @@ const ListRepositories = () => {
     JSON.parse(storage.getItem("favorites"))
   );
   if (repositories.length === 0 && !loading) {
-    return <div style={{ textAlign: "center" }}>Репозитории не найдены</div>;
+    return <div style={{ textAlign: "center" }}>No repositories found</div>;
   }
 
   const favsBtnHandler = (id) => {
