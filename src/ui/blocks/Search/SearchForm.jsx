@@ -16,7 +16,10 @@ const SearchForm = () => {
   const { query, repositories } = useSelector((state) => state.repositories);
   const [inputVal, setInputVal] = useState(query || "");
   const [inputValid, setInputValid] = useState(true);
-  const [sortType, setSortType] = useState({ sort: "", order: "" });
+  const [sortType, setSortType] = useState({
+    sort: "best-match",
+    order: "desc",
+  });
   const typeSelectRef = useRef();
   const dispatch = useDispatch();
   const onSubmitHandler = (e) => {

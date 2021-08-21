@@ -79,11 +79,11 @@ export const LinkBase = styled.a`
 export const LinkStyled = styled.div`
   font-size: 12px;
   padding: 4px 8px;
-  color: #b3b3b3;
+  color: ${props => props.active ? '#d5ab78' : '#b3b3b3'};
   align-items: center;
-  background-color: transparent;
   border-radius: 3px;
-  border: 1px solid #b3b3b3;
+  border: 1px solid;
+  border-color: ${props => props.active ? '#d5ab78' : 'b3b3b3'};
   white-space: nowrap;
   margin-left: 8px;
   &:hover {

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import RepositoryItem from "./RepositoryItem/RepositoryItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ListWrapper, Title } from "./ListRepositoriesStyled";
 import Pagination from "../Pagination/Pagination";
 import Preloader from "../../base/Preloader/Preloader";
+import { fetchRepositories } from "../../../store/actions/repositories";
 
 const ListRepositories = () => {
-  const { repositories, loading, query } = useSelector(
-    (state) => state.repositories
-  );
+  const { repositories, loading, query, page, count, limit, sort, order } =
+    useSelector((state) => state.repositories);
+  const dispatch = useDispatch();
   const storage = window.localStorage;
   const [favsArr, setFavsArr] = useState(
     JSON.parse(storage.getItem("favorites"))
@@ -30,6 +31,10 @@ const ListRepositories = () => {
     storage.setItem("favorites", JSON.stringify(tempArr));
   };
 
+  const onPageChanged = (page) => {
+    dispatch(fetchRepositories(query, limit, page, sort, order));
+  };
+
   return loading ? (
     <Preloader />
   ) : (
@@ -46,7 +51,12 @@ const ListRepositories = () => {
           onClick={favsBtnHandler}
         />
       ))}
-      <Pagination />
+      <Pagination
+        onPageChanged={onPageChanged}
+        page={page}
+        count={count}
+        limit={limit}
+      />
     </ListWrapper>
   );
 };
