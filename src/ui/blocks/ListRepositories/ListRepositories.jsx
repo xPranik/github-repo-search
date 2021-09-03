@@ -11,15 +11,17 @@ const ListRepositories = () => {
     useSelector((state) => state.repositories);
   const dispatch = useDispatch();
   const storage = window.localStorage;
-  const [favsArr, setFavsArr] = useState(
-    JSON.parse(storage.getItem("favorites"))
-  );
+  const favs = storage.getItem("favorites");
+  const [favsArr, setFavsArr] = useState(favs ? JSON.parse(favs) : []);
   if (repositories.length === 0 && !loading) {
     return <div style={{ textAlign: "center" }}>No repositories found</div>;
   }
 
   const favsBtnHandler = (id) => {
-    const storageFavs = JSON.parse(storage.getItem("favorites"));
+    let storageFavs;
+    if (storage.getItem("favorites")) {
+      storageFavs = JSON.parse(storage.getItem("favorites"));
+    }
     const tempArr = storageFavs ? storageFavs : [];
     const existingId = favsArr.indexOf(id);
     if (existingId >= 0) {
